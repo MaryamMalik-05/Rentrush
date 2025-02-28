@@ -1,0 +1,117 @@
+/* Booking Container */
+.booking-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+    gap: 30px;
+    background-color: #0B132A;
+   
+}
+
+/* Car Image Section */
+.car-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.car-image {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+/* Booking Card */
+.booking-card {
+    flex: 1;
+    padding: 20px;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.car-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 5px;
+}
+
+.car-price {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Car Specs (Icons & Text) */
+.car-specs {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.spec-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.spec-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Rental Info */
+.rental-info {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.rental-header {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.rental-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.rental-table th {
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+
+.rental-table td {
+    padding: 8px;
+    border: 1px solid black;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Button Wrapper */
+.button-wrapper {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.return-button {
+    background-color: #ff5733 !important;
+    color: white !important;
+    padding: 10px 20px;
+    font-size: 16px;
+}
