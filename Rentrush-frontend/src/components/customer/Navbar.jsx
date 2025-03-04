@@ -129,15 +129,20 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50 h-[80px] w-[100%]">
-      <div className="mx-auto px-6 py-3 flex justify-between items-center">
-        {/* Logo */}
+    <nav className="bg-white shadow-md sticky top-0 z-50 h-[70px] flex justify-between items-center w-[100%]">
+      <div className="mx-auto px-4 flex justify-between items-center w-[100%]">
         <div className="flex items-center">
-          <Link to="/customer/dashboard">
-            <img src="/src/assets/logo.svg" className="-ml-4 w-[150px] mt-[-5px]" />
+          <Link to="/">
+          <div className="flex items-center">
+          <img
+    src="/src/assets/logo.png"
+    alt="Logo"
+    className="-my-3 h-[80px] mr-2"
+  />
+  <h1 className="list-none cursor-pointer font-bold text-[30px] text-[#00004b]">RentRush</h1>
+</div>
           </Link>
         </div>
-
         {/* Center Navigation (Car and Showroom links) */}
         <div className="hidden md:flex space-x-10 text-gray-600">
           <ScrollLink 

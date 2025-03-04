@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+/*import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import { CircleGauge, Fuel, GripHorizontal } from "lucide-react";
 import "./Carbooking.css";
@@ -246,10 +246,12 @@ const Bookings = () => {
   );
 };
 
-export default Bookings;
-/*import React, { useState, useEffect } from "react";
+export default Bookings;*/
+
+import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import './Carbooking.css'
+import Car from '../../assets/aboutcar.png'
 import { CircleGauge, Fuel, GripHorizontal } from "lucide-react";
 import { Link } from "react-router-dom";
 import axios from "axios"; // Import axios for making HTTP requests
@@ -306,14 +308,14 @@ const Bookings = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-white flex flex-col lg:flex-row items-start lg:h-screen h-auto w-full p-6 pb-5 relative">
+      <div >
         {bookings.map((booking) => (
-          <div key={booking._id} className="lg:w-1/2 w-full mb-6 lg:mb-0">
+          <div className="bg-white flex flex-col lg:flex-row items-start lg:h-screen h-auto w-full p-6 pb-5 relative"><div key={booking._id} className="lg:w-1/2 w-full mb-6 lg:mb-0">
             <img
-              src={`/uploads/${booking.carDetails.images}`} // Use the correct image path
+              src={Car} // Use the correct image path
               alt={`${booking.carDetails.carBrand} ${booking.carDetails.carModel}`}
               className="w-full h-auto lg:h-full object-cover rounded-lg"
-            />
+            /></div>
             <div className="lg:w-1/2 w-full lg:pl-10 space-y-4">
               <h2 className="text-3xl font-bold">
                 {booking.carDetails.carBrand} {booking.carDetails.carModel}
@@ -326,7 +328,7 @@ const Bookings = () => {
                 </div>
                 <div className="flex flex-col items-center">
                   <Fuel />
-                  <span className="text-gray-500">{booking.carDetails.fuelType}</span>
+                  <span className="text-gray-500 mr-1">fuel</span>
                 </div>
                 <div className="flex flex-col items-center">
                   <GripHorizontal />
@@ -408,12 +410,12 @@ const Bookings = () => {
 
               {new Date() < new Date(booking.rentalStartDate) && (
                 <div className="bottom-4 right-4 space-x-4 pb-5">
-                  <Link to={`/updatebooking1/${booking._id}`}>
+                  <Link to={`/updatebooking1`}>
                     <button className="bg-green-600 text-white py-2 px-4 rounded">
                       Update Booking
                     </button>
                   </Link>
-                  <Link to={`/cancelbooking/${booking._id}`}>
+                  <Link to={`/cancelbooking`}>
                     <button className="bg-red-600 text-white py-2 px-4 rounded">
                       Cancel Booking
                     </button>
@@ -428,4 +430,4 @@ const Bookings = () => {
   );
 };
 
-export default Bookings;*/
+export default Bookings;

@@ -1,177 +1,143 @@
-import React, { useState } from "react";
-import Navbar from "../customer/Navbar";
+import React, { useState } from 'react';
+import { FiEdit2, FiUser, FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
+import Navbar from '../customer/Navbar';
+import { motion } from 'framer-motion';
 
 const UserProfile = () => {
-    const [isEditing, setIsEditing] = useState(false);
-    const [userInfo, setUserInfo] = useState({
-        name: "John Doe",
-        email: "john.doe@example.com",
-        phone: "123-456-7890",
-        address: "123 Main St",
-        cnic: "12345-6789012-3"
-    });
+  const [isEditing, setIsEditing] = useState(false);
+  const [user, setUser] = useState({
+    name: 'John Doe',
+    email: 'johndoe@example.com',
+    phone: '+1234567890',
+    address: '123 Main St, City, Country',
+  });
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setUserInfo({
-            ...userInfo,
-            [name]: value
-        });
-    };
+  const handleEdit = () => {
+    setIsEditing(!isEditing);
+  };
 
-    const handleEdit = () => setIsEditing(true);
+  const handleChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
 
-    const handleSave = () => {
-        setIsEditing(false);
-    };
+  const inputAnimation = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0 },
+  };
 
-    const handleCancel = () => setIsEditing(false);
-
-    return (
-        <div className="bg-white h-screen"> 
-            <Navbar />
-
-            <div className="w-96 justify-center text-center mt-10 m-auto p-4 bg-white rounded-xl">
-                <h2 className="text-2xl font-bold mb-4">User Profile</h2>
-
-                <div className="profile-fields">
-                    <div className="mb-4">
-                        <label className="block font-semibold text-xl">Name</label>
-                        {isEditing ? (
-                            <input
-                                type="text"
-                                name="name"
-                                value={userInfo.name}
-                                onChange={handleInputChange}
-                                className="border p-2 rounded w-full"
-                            />
-                        ) : (
-                            <input
-                                type="text"
-                                name="name"
-                                value={userInfo.name}
-                                onChange={handleInputChange}
-                                className="border p-2 rounded w-auto"
-                                readOnly
-                            />
-                        )}
-                    </div>
-
-                    <div className="mb-4">
-                        <label className="block font-semibold text-xl">Email</label>
-                        {isEditing ? (
-                            <input
-                                type="email"
-                                name="email"
-                                value={userInfo.email}
-                                onChange={handleInputChange}
-                                className="border p-2 rounded w-full"
-                            />
-                        ) : (
-                            <input
-                                type="text"
-                                name="name"
-                                value={userInfo.email}
-                                onChange={handleInputChange}
-                                className="border p-2 rounded w-auto"
-                                readOnly
-                            />
-                        )}
-                    </div>
-
-                    <div className="mb-4">
-                        <label className="block font-semibold text-xl">Phone Number</label>
-                        {isEditing ? (
-                            <input
-                                type="tel"
-                                name="phone"
-                                value={userInfo.phone}
-                                onChange={handleInputChange}
-                                className="border p-2 rounded w-full"
-                            />
-                        ) : (
-                            <input
-                                type="text"
-                                name="name"
-                                value={userInfo.phone}
-                                onChange={handleInputChange}
-                                className="border p-2 rounded w-auto"
-                                readOnly
-                            />
-                        )}
-                    </div>
-
-                    <div className="mb-4">
-                        <label className="block font-semibold text-xl">Address</label>
-                        {isEditing ? (
-                            <input
-                                type="text"
-                                name="address"
-                                value={userInfo.address}
-                                onChange={handleInputChange}
-                                className="border p-2 rounded w-full"
-                            />
-                        ) : (
-                            <input
-                                type="text"
-                                name="name"
-                                value={userInfo.address}
-                                onChange={handleInputChange}
-                                className="border p-2 rounded w-auto"
-                                readOnly
-                            />
-                        )}
-                    </div>
-
-                    <div className="mb-4">
-                        <label className="block font-semibold text-xl">CNIC</label>
-                        {isEditing ? (
-                            <input
-                                type="text"
-                                name="cnic"
-                                value={userInfo.cnic}
-                                onChange={handleInputChange}
-                                className="border p-2 rounded w-full"
-                            />
-                        ) : (
-                            <input
-                                type="text"
-                                name="name"
-                                value={userInfo.cnic}
-                                onChange={handleInputChange}
-                                className="border p-2 rounded w-auto"
-                                readOnly
-                            />
-                        )}
-                    </div>
-                </div>
-
-                {!isEditing ? (
-                    <button
-                        onClick={handleEdit}
-                        className="bg-primary text-white px-4 py-2 rounded mt-4"
-                    >
-                        Edit
-                    </button>
-                ) : (
-                    <div>
-                        <button
-                            onClick={handleSave}
-                            className="bg-green-500 text-white px-4 py-2 rounded mt-4 mr-2"
-                        >
-                            Save
-                        </button>
-                        <button
-                            onClick={handleCancel}
-                            className="bg-red-500 text-white px-4 py-2 rounded mt-4"
-                        >
-                            Cancel
-                        </button>
-                    </div>
-                )}
-            </div>
+  return (
+    <>
+      <Navbar />
+      <motion.div
+        className="max-w-3xl mx-auto mt-8 p-6 bg-white shadow-lg rounded-lg"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="flex items-center justify-between">
+          <h1 className="text-2xl font-bold">User Profile</h1>
+          <button
+            onClick={handleEdit}
+            className={`px-4 py-2 rounded transition duration-300 ease-in-out ${
+              isEditing ? 'bg-purple-500 text-white' : 'bg-green-500 text-white'
+            }`}
+          >
+            {isEditing ? 'Save' : 'Edit'} <FiEdit2 className="inline ml-2" />
+          </button>
         </div>
-    );
-}
+
+        <div className="mt-6">
+          <motion.div
+            className="flex items-center mb-4"
+            initial="hidden"
+            animate="visible"
+            variants={inputAnimation}
+            transition={{ duration: 0.3, delay: 0.1 }}
+          >
+            <FiUser className="mr-2" />
+            <span className="font-bold mr-2">Name:</span>
+            {isEditing ? (
+              <input
+                type="text"
+                name="name"
+                value={user.name}
+                onChange={handleChange}
+                className="border rounded px-2 py-1 transition-all duration-300 ease-in-out"
+              />
+            ) : (
+              <span>{user.name}</span>
+            )}
+          </motion.div>
+
+          <motion.div
+            className="flex items-center mb-4"
+            initial="hidden"
+            animate="visible"
+            variants={inputAnimation}
+            transition={{ duration: 0.3, delay: 0.2 }}
+          >
+            <FiMail className="mr-2" />
+            <span className="font-bold mr-2">Email:</span>
+            {isEditing ? (
+              <input
+                type="email"
+                name="email"
+                value={user.email}
+                onChange={handleChange}
+                className="border rounded px-2 py-1 transition-all duration-300 ease-in-out"
+              />
+            ) : (
+              <span>{user.email}</span>
+            )}
+          </motion.div>
+
+          <motion.div
+            className="flex items-center mb-4"
+            initial="hidden"
+            animate="visible"
+            variants={inputAnimation}
+            transition={{ duration: 0.3, delay: 0.3 }}
+          >
+            <FiPhone className="mr-2" />
+            <span className="font-bold mr-2">Phone:</span>
+            {isEditing ? (
+              <input
+                type="tel"
+                name="phone"
+                value={user.phone}
+                onChange={handleChange}
+                className="border rounded px-2 py-1 transition-all duration-300 ease-in-out"
+              />
+            ) : (
+              <span>{user.phone}</span>
+            )}
+          </motion.div>
+
+          <motion.div
+            className="flex items-center mb-4"
+            initial="hidden"
+            animate="visible"
+            variants={inputAnimation}
+            transition={{ duration: 0.3, delay: 0.4 }}
+          >
+            <FiMapPin className="mr-2" />
+            <span className="font-bold mr-2">Address:</span>
+            {isEditing ? (
+              <input
+                type="text"
+                name="address"
+                value={user.address}
+                onChange={handleChange}
+                className="border rounded px-2 py-1 transition-all duration-300 ease-in-out"
+              />
+            ) : (
+              <span>{user.address}</span>
+            )}
+          </motion.div>
+        </div>
+      </motion.div>
+    </>
+  );
+};
 
 export default UserProfile;
